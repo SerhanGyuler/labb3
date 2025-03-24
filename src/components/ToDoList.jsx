@@ -1,4 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import ToDoInput from "./ToDoInput";
+import ToDoItem from "./ToDoItem";
 
 function ToDoList() {
   const [todos, setTodos] = useState(() => {
@@ -41,40 +43,19 @@ function ToDoList() {
         <p>Todo List</p>
       </div>
 
-      <div className="toDoInput">
-        <input
-          type="text"
-          placeholder="Add a To do"
-          value={inputValue}
-          onChange={(e) => setInputValue(e.target.value)}
-        />
-        <button className="addToDo" onClick={addTodo}>
-          Add
-        </button>
-      </div>
+      <ToDoInput
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        addTodo={addTodo}
+      />
 
       {todos.map((todo) => (
-        <div key={todo.id} className="todoItem">
-          <div className="todocontainer">
-            <span>{todo.text}</span>
-          </div>
-
-          <div className="todoother">
-            <span>Status:</span>
-            <p
-              style={{
-                textDecoration: todo.completed ? "line-through" : "none",
-              }}
-            >
-              {todo.completed ? "Finished" : "Pending"}
-            </p>
-            <button onClick={() => toggleComplete(todo.id)}>
-              Mark as {todo.completed ? "Incomplete" : "Completed"}
-            </button>
-
-            <button onClick={() => removeTodo(todo.id)}>Remove</button>
-          </div>
-        </div>
+        <ToDoItem
+          key={todo.id}
+          todo={todo}
+          toggleComplete={toggleComplete}
+          removeTodo={removeTodo}
+        />
       ))}
     </div>
   );
