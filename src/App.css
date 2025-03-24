@@ -48,6 +48,7 @@
   font-size: 1.8rem;
   padding: 10px 20px;
   margin-right: 1%;
+  margin-left: 10%;
   transition: border-color 0.3s ease;
 }
 
@@ -111,7 +112,8 @@
 }
 
 .todoother p {
-  margin-left: -25%;
+  margin-left: -26%;
+  margin-top: 3px;
   font-size: 1.4rem;
   color: black;
 }
@@ -139,4 +141,14 @@
 .todoother span {
   font-size: 1.5rem;
   color: black;
+}
+
+
+@media (min-width: 2560px) {
+  .todoother p {
+    margin-left: -32%;
+    margin-top: 3px;
+    font-size: 1.4rem;
+    color: black;
+  }
 }
